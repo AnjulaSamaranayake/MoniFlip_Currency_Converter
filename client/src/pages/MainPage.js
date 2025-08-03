@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import axios from 'axios';
 export default function MainPage() {
 
     // state for the date, source currency, target currency, and amount
@@ -8,11 +8,24 @@ export default function MainPage() {
     const [targetCurrency, setTargetCurrency] = useState('');
     const [amount, setAmount] = useState(0);
     const [conversionResult, setConversionResult] = useState(0);
+    const [currencyNames, setCurrencyNames] = useState([]);
 
-    //handle dubmit method
+    //handle submit method
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(date, setSourceCurrency, targetCurrency, amount);
+    }
+
+    //Get all currencies from the API
+    const getCurrencyNames = async () => {
+        try {
+            const response = await axios.get(
+                'http://localhost:5000/getAllCurrencies'
+            );
+            setCurrencyNames(response.data);
+        }catch (err){
+            console.error(err);
+        }
     }
 
   return (
