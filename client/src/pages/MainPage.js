@@ -13,8 +13,27 @@ export default function MainPage() {
     //handle submit method
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(date, setSourceCurrency, targetCurrency, amount);
+        
+        try{
+            const response = axios.post('http://localhost:5000/getConversion', {
+                params: {
+                    date,
+                    sourceCurrency,
+                    targetCurrency,
+                    amount
+                },
+            });
+
+            // set the rest here
+            setConversionResult(response.data);
+
+            console.log(sourceCurrency, targetCurrency);
+        }catch (err){
+            console.error(err);
+        }
     }
+
+
 
     //Get all currencies from the API
 useEffect(() => {
@@ -78,6 +97,7 @@ useEffect(() => {
                 </form>
             </section>
         </div>
+        {conversionResult}
     </div>
   )
 }

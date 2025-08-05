@@ -23,6 +23,28 @@ app.get('/getAllCurrencies', async (req, res) => {
     }
 });
 
+app.get('/getConversion', async (req, res) => {
+    const {date, sourceCurrency, targetCurrency, amount} = req.query;
+
+    try {
+        const dataURL = `https://api.frankfurter.dev/v1/${date}?from=${sourceCurrency}&to=${targetCurrency}`;
+
+        const dataResponse = await axios.get(dataURL);
+        const rates = dataResponse.data.rates;
+
+        //calculate the conversion
+        const sourceRate = rates[sourceCurrency];
+        const targetRate = rates[targetCurrency];
+
+        const conversion = (targetRate / sourceRate) * amount;
+
+        return res.json(conversion);
+        
+    } catch (err) {
+        console.error(err);
+    }
+});    
+
 //listening port
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
