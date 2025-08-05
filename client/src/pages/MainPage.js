@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 export default function MainPage() {
 
@@ -17,6 +17,7 @@ export default function MainPage() {
     }
 
     //Get all currencies from the API
+useEffect(() => {
     const getCurrencyNames = async () => {
         try {
             const response = await axios.get(
@@ -26,7 +27,9 @@ export default function MainPage() {
         }catch (err){
             console.error(err);
         }
-    }
+    };
+    getCurrencyNames();
+} ,[]);
 
   return (
     <div>
@@ -46,6 +49,9 @@ export default function MainPage() {
                                 <label htmlFor={sourceCurrency} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Source Currency</label>
                                 <select onChange={(e) => setSourceCurrency(e.target.value)} className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' name='sourceCurrency' id='sourceCurrency' >
                                     <option value="">Select your source currency</option>
+                                    {Object.keys(currencyNames).map((currency) => (
+                                        <option className='p-1' key={currency} value={currency}>{currencyNames[currency]}</option>
+                                    ))}
                                 </select>
                             </div>
 
@@ -53,6 +59,9 @@ export default function MainPage() {
                                 <label htmlFor={targetCurrency} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Target Currency</label>
                                 <select onChange={(e) => setTargetCurrency(e.target.value)} className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' name='targetCurrency' id='targetCurrency' >
                                     <option value="">Select your target currency</option>
+                                    {Object.keys(currencyNames).map((currency) => (
+                                        <option className='p-1' key={currency} value={currency}>{currencyNames[currency]}</option>
+                                    ))}
                                 </select>
                             </div>
 
