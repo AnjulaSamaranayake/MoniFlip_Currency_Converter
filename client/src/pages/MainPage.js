@@ -52,8 +52,8 @@ useEffect(() => {
 
   return (
     <div>
-        <h1 className='lg:mx-32 text-5xl font-bold text-blue-500'>MoniFlip</h1>
-        <p className='lg:mx-32 opacity-40 py-6'>Moniflip is your smart, lightning-fast currency converter designed to make global money conversions effortless. With real-time exchange rates and instant results, you can flip between currencies in seconds – whether you’re traveling, shopping online, or managing international business. Our sleek and intuitive interface ensures you get accurate conversions without the hassle, helping you make confident financial decisions anytime, anywhere. Experience the simplicity of global currency conversion, only with Monoflip, powered by <b>AstroCode</b>.</p>
+        <h1 className='lg:mx-32 text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 italic'>Moni Flip</h1>
+        <p className='lg:mx-32 opacity-60 py-6 mb-3 text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:me-3 first-letter:float-start'>Moniflip is your smart, lightning-fast currency converter designed to make global money conversions effortless. With real-time exchange rates and instant results, you can flip between currencies in seconds – whether you’re traveling, shopping online, or managing international business. Our sleek and intuitive interface ensures you get accurate conversions without the hassle, helping you make confident financial decisions anytime, anywhere. Experience the simplicity of global currency conversion, only with Monoflip, powered by <b>AstroCode</b>.</p>
 
         <div className='mt-5 flex items-center justify-center flex-col'>
             <section className='w-full lg:w-1/2'>
@@ -97,7 +97,8 @@ useEffect(() => {
                 </form>
             </section>
         </div>
-        {conversionResult}
+        <section className='mt-5 lg:mx-96 text-transparent  text-2xl italic font-semibold text-gray-900 dark:text-white'> {amount} {currencyNames[sourceCurrency]} is equal to {" "} <span className='text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400'> {conversionResult} </span> in {currencyNames[targetCurrency]} {" "} </section>
+
     </div>
   )
 }

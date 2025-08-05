@@ -38,7 +38,7 @@ app.get('/getConversion', async (req, res) => {
 
         const conversion = (targetRate / sourceRate) * amount;
 
-        return res.json(conversion);
+        return res.json(conversion.toFixed(2)); // return the conversion result rounded to 2 decimal places
         
     } catch (err) {
         console.error(err);
