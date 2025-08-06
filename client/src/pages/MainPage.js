@@ -60,12 +60,12 @@ useEffect(() => {
                 <form onSubmit={handleSubmit}>
                         <div className='mb-6'>
                             <div>
-                                <label htmlFor={date} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                                <label htmlFor={date} className="py-3 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
                                 <input onChange={(e) => setDate(e.target.value)} type="Date" id="date" name='date' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                             </div>
 
                             <div>
-                                <label htmlFor={sourceCurrency} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Source Currency</label>
+                                <label htmlFor={sourceCurrency} className="py-3 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Source Currency</label>
                                 <select onChange={(e) => setSourceCurrency(e.target.value)} className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' name='sourceCurrency' id='sourceCurrency' >
                                     <option value="">Select your source currency</option>
                                     {Object.keys(currencyNames).map((currency) => (
@@ -75,7 +75,7 @@ useEffect(() => {
                             </div>
 
                             <div>
-                                <label htmlFor={targetCurrency} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Target Currency</label>
+                                <label htmlFor={targetCurrency} className="py-3 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Target Currency</label>
                                 <select onChange={(e) => setTargetCurrency(e.target.value)} className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' name='targetCurrency' id='targetCurrency' >
                                     <option value="">Select your target currency</option>
                                     {Object.keys(currencyNames).map((currency) => (
@@ -85,7 +85,7 @@ useEffect(() => {
                             </div>
 
                              <div>
-                                <label htmlFor={amount} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount in Source Currency</label>
+                                <label htmlFor={amount} className="py-3 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount in Source Currency</label>
                                 <input onChange={(e) => setAmount(e.target.value)} type="number" id="amount" name='amount' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='Amount in source currency .....' required />
                             </div>
                         </div>

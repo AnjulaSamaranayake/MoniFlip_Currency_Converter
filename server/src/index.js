@@ -10,7 +10,7 @@ app.use(cors());
 
 //all currencies 
 app.get('/getAllCurrencies', async (req, res) => {
-    const nameURL = "https://api.frankfurter.dev/v1/currencies"
+    const nameURL = "https://api.frankfurter.dev/v1/currencies"; 
 
     try{
         const namesResponse = await axios.get(nameURL);
@@ -27,7 +27,7 @@ app.get('/getConversion', async (req, res) => {
     const {date, sourceCurrency, targetCurrency, amount} = req.query;
 
     try {
-        const dataURL = `https://api.frankfurter.dev/v1/${date}?from=${sourceCurrency}&to=${targetCurrency}`;
+        const dataURL = `https://api.currencylayer.com/historical?date=${date}/convert?from={sourceCurrency}&to=${targetCurrency}&amount=${amount}&access`;
 
         const dataResponse = await axios.get(dataURL);
         const rates = dataResponse.data.rates;
