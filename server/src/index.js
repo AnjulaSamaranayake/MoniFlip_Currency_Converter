@@ -25,23 +25,18 @@ app.get('/getAllCurrencies', async (req, res) => {
 
 app.get('/getConversion', async (req, res) => {
     const {date, sourceCurrency, targetCurrency, amount} = req.query;
-
+    
     try {
-        const dataURL = `https://api.currencylayer.com/historical?date=${date}/convert?from={sourceCurrency}&to=${targetCurrency}&amount=${amount}&access`;
-
-        const dataResponse = await axios.get(dataURL);
-        const rates = dataResponse.data.rates;
-
-        //calculate the conversion
-        const sourceRate = rates[sourceCurrency];
-        const targetRate = rates[targetCurrency];
-
-        const conversion = (targetRate / sourceRate) * amount;
-
-        return res.json(conversion.toFixed(2)); // return the conversion result rounded to 2 decimal places
+        // Use Frankfurter API which doesn't require an API key
+        const dataURL = `https://api.frankfurter.app/${date}?from=${sourceCurrency}&to=${targetCurrency}&amount=${amount}`;
         
+        const dataResponse = await axios.get(dataURL);
+        const result = dataResponse.data.rates[targetCurrency];
+        
+        return res.json(result.toFixed(2));
     } catch (err) {
         console.error(err);
+        res.status(500).json({ error: 'Conversion failed' });
     }
 });    
 
