@@ -51,11 +51,11 @@ export default function MainPage() {
     }
 
     // Swap currencies
-    const handleSwapCurrencies = () => {
-        const temp = sourceCurrency;
-        setSourceCurrency(targetCurrency);
-        setTargetCurrency(temp);
-    };
+    // const handleSwapCurrencies = () => {
+    //     const temp = sourceCurrency;
+    //     setSourceCurrency(targetCurrency);
+    //     setTargetCurrency(temp);
+    // };
 
     // Get all currencies from the API
     useEffect(() => {
